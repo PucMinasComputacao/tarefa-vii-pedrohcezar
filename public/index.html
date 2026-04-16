@@ -1,12 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
+    <title>Aula de JavaScript</title>
+    <style>
+    </style>
+    <script>
+        function calculaNota() {
+            let nome = document.getElementById("nome").value;
+            let curso = document.getElementById("curso").value;
+            let disciplina = document.getElementById("disciplina").value;
+            let nota1 = parseFloat(document.getElementById("nota1").value);
+            let nota2 = parseFloat(document.getElementById("nota2").value);
+            let media = (nota1 + nota2) / 2;
+            if (media>=6) {
+                status = "Aprovado";
+            }
+            else {
+                if (media <6 && media>=4){
+                    status = "Recuperação";
+                }
+                else {
+                    status = "Reprovado";
+                }
+            }
+            let resultado = "Aluno: " + nome +
+                "\nCurso: " + curso +
+                "\nDisciplina: " + disciplina +
+                "\nMédia: " + media.toFixed(2) + "\nStatus:" + status;
+            document.getElementById("area").value = resultado;
+        }
+        function limparForm() {
+            document.getElementById("formulario").reset();
+        }
+    </script>
 </head>
 <body>
-    
+        <h2>Calculador de Notas</h2>
+        <form id="formulario">
+            <label>Nome:</label>
+            <input type="text" id="nome">
+            <div class="row">
+                <div>
+                    <label>Curso:</label>
+                    <input type="text" id="curso">
+                </div>
+                <div>
+                    <label>Disciplina:</label>
+                    <input type="text" id="disciplina">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label>Nota 1:</label>
+                    <input type="number" id="nota1">
+                </div>
+                <div>
+                    <label>Nota 2:</label>
+                    <input type="number" id="nota2">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label>Resultado</label>
+                    <textarea id="area" rows="10" cols="46"></textarea>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="button" class="btn-confirmar" onclick="calculaNota()">Confirmar</button>
+                <button type="button" class="btn-limpar" onclick="limparForm()">Limpar</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
